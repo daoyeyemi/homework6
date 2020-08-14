@@ -1,0 +1,17 @@
+.container{
+    margin: 10px;
+}
+
+#searchTitle{
+    font-weight: bold;
+}
+
+#navTitle{
+    color:white;
+    font-size: 50px;
+    margin: 0% 33% 0% 33%;
+}
+
+/* nav {
+
+} */
