@@ -75,7 +75,7 @@
 </form>
 <script type="text/javascript">
         
-var city = "San Diego"
+var city = "Long Beach"
 
 var queryURL="https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=b55cf10b447457a324c51468a78d2076";
 
@@ -85,11 +85,13 @@ $.ajax({
   })
   .then(function(response){
 
-    console.log(response.list);
+    console.log(response);
     
     var button = document.getElementById("button-addon2");
     
     button.addEventListener("click", function(){
+
+        document.getElementById("mainTitle").append(response.city.name);
 
         document.getElementById("temp1").append("Temp: " + response.list[8].main.temp);
         document.getElementById("humidity1").append("Humidity: " + response.list[8].main.humidity + " %");
