@@ -41,32 +41,32 @@
                     <span class="forecastbox" id="day1">
                         <div class="5-dates" id="date1"></div>
                         <div id="pic1"></div>
-                        <div id="temp1">Temp: </div>
-                        <div id="humidty1">Humidity: </div>
+                        <div id="temp1"></div>
+                        <div id="humidity1"></div>
                     </span>
                     <span class="forecastbox" id="day2">
                         <div class="5-dates" id="date2"></div>
                         <div id="pic2"></div>
-                        <div id="temp2">Temp: </div>
-                        <div id="humidty2">Humidity: </div>
+                        <div id="temp2"></div>
+                        <div id="humidity2"></div>
                     </span>
                     <span class="forecastbox" id="day3">
                         <div class="5-dates" id="date3"></div>
                         <div id="pic3"></div>
-                        <div id="temp3">Temp: </div>
-                        <div id="humidty3">Humidity: </div>
+                        <div id="temp3"></div>
+                        <div id="humidity3"></div>
                     </span>
                     <span class="forecastbox" id="day4">
                         <div class="5-dates" id="date4"></div>
                         <div id="pic4"></div>
-                        <div id="temp4">Temp: </div>
-                        <div id="humidty4">Humidity: </div>
+                        <div id="temp4"></div>
+                        <div id="humidity4"></div>
                     </span>
                     <span class="forecastbox" id="day5">
                         <div class="5-dates" id="date5"></div>
                         <div id="pic5"></div>
-                        <div id="temp5">Temp: </div>
-                        <div id="humidty5">Humidity: </div>
+                        <div id="temp5"></div>
+                        <div id="humidity5"></div>
                     </span>
                 </div>
             </div>
@@ -85,19 +85,28 @@ $.ajax({
   })
   .then(function(response){
 
-    console.log(response);
+    console.log(response.list);
     
     var button = document.getElementById("button-addon2");
     
     button.addEventListener("click", function(){
 
-        // var input = document.getElementById("inputCity");
-        
-        // var city = input.value;
+        document.getElementById("temp1").append("Temp: " + response.list[8].main.temp);
+        document.getElementById("humidity1").append("Humidity: " + response.list[8].main.humidity + " %");
 
-        // document.getElementById("temp").append()
+        document.getElementById("temp2").append("Temp: " + response.list[16].main.temp);
+        document.getElementById("humidity2").append("Humidity: " + response.list[16].main.humidity + " %");
 
+        document.getElementById("temp3").append("Temp: " + response.list[24].main.temp);
+        document.getElementById("humidity3").append("Humidity: " + response.list[24].main.humidity + " %");
+
+        document.getElementById("temp4").append("Temp: " + response.list[32].main.temp);
+        document.getElementById("humidity4").append("Humidity: " + response.list[32].main.humidity + " %");
+
+        document.getElementById("temp5").append("Temp: " + response.list[39].main.temp);
+        document.getElementById("humidity5").append("Humidity: " + response.list[39].main.humidity + " %");
     })
+
   })
 
 var queryURL2="https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=b55cf10b447457a324c51468a78d2076";
