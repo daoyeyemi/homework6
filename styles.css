@@ -12,6 +12,14 @@
     margin: 0% 33% 0% 33%;
 }
 
+#forecastTitle {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.forecastbox {
+    background-color: aquamarine;
+}
 /* nav {
 
 } */

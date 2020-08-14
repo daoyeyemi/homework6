@@ -15,6 +15,7 @@
     <nav class="navbar navbar-dark bg-dark">
         <p id="navTitle">Weather Dashboard</p>
     </nav>
+    <form>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -36,11 +37,42 @@
                     <br>
                 </div>
                 <div id="forecastBox">
-                    <div id="forecastTitle">5-Day Forecast:</div>
+                    <div id="forecastTitle">5-Day Forecast: </div>
+                    <span class="forecastbox" id="day1">
+                        <div class="5-dates" id="date1"></div>
+                        <div id="pic1"></div>
+                        <div id="temp1">Temp: </div>
+                        <div id="humidty1">Humidity: </div>
+                    </span>
+                    <span class="forecastbox" id="day2">
+                        <div class="5-dates" id="date2"></div>
+                        <div id="pic2"></div>
+                        <div id="temp2">Temp: </div>
+                        <div id="humidty2">Humidity: </div>
+                    </span>
+                    <span class="forecastbox" id="day3">
+                        <div class="5-dates" id="date3"></div>
+                        <div id="pic3"></div>
+                        <div id="temp3">Temp: </div>
+                        <div id="humidty3">Humidity: </div>
+                    </span>
+                    <span class="forecastbox" id="day4">
+                        <div class="5-dates" id="date4"></div>
+                        <div id="pic4"></div>
+                        <div id="temp4">Temp: </div>
+                        <div id="humidty4">Humidity: </div>
+                    </span>
+                    <span class="forecastbox" id="day5">
+                        <div class="5-dates" id="date5"></div>
+                        <div id="pic5"></div>
+                        <div id="temp5">Temp: </div>
+                        <div id="humidty5">Humidity: </div>
+                    </span>
                 </div>
             </div>
         </div>
     </div>
+</form>
 <script type="text/javascript">
         
 var city = "San Diego"
@@ -59,11 +91,11 @@ $.ajax({
     
     button.addEventListener("click", function(){
 
-        var input = document.getElementById("inputCity");
+        // var input = document.getElementById("inputCity");
         
-        var city = input.value;
+        // var city = input.value;
 
-        document.getElementById("temp").append()
+        // document.getElementById("temp").append()
 
     })
   })
@@ -85,6 +117,12 @@ $.ajax({
         var city = input.value;
 
         document.getElementById("temp").append(response.main.temp);
+
+        document.getElementById("humid").append(response.main.humidity + " %");
+
+        document.getElementById("wind").append(response.wind.speed + " MPH");
+
+        document.getElementById("uv").append();
     
     })
 
