@@ -73,6 +73,7 @@
         </div>
     </div>
 </form>
+
 <script type="text/javascript">
         
 var city = "Long Beach"
@@ -86,27 +87,39 @@ $.ajax({
   .then(function(response){
 
     console.log(response);
-    
+
+    var date = response.list[0].dt_txt;
+    console.log(date);
+    var month = date.slice(5,7);
+    console.log(month);
+    var year = date.slice(0,4);
+    console.log(year);
+    var day = date.slice(8,10);
+    console.log(day);
+    var mainDateInfo = [month, day, year];
+    var actualDate = mainDateInfo.join('/');
+    console.log(actualDate);
     var button = document.getElementById("button-addon2");
     
     button.addEventListener("click", function(){
 
         document.getElementById("mainTitle").append(response.city.name);
-
+        document.getElementById("mainTitle").append(" " + actualDate);
+        
         document.getElementById("temp1").append("Temp: " + response.list[8].main.temp);
-        document.getElementById("humidity1").append("Humidity: " + response.list[8].main.humidity + " %");
+        document.getElementById("humidity1").append("Humidity: " + response.list[8].main.humidity + "%");
 
         document.getElementById("temp2").append("Temp: " + response.list[16].main.temp);
-        document.getElementById("humidity2").append("Humidity: " + response.list[16].main.humidity + " %");
+        document.getElementById("humidity2").append("Humidity: " + response.list[16].main.humidity + "%");
 
         document.getElementById("temp3").append("Temp: " + response.list[24].main.temp);
-        document.getElementById("humidity3").append("Humidity: " + response.list[24].main.humidity + " %");
+        document.getElementById("humidity3").append("Humidity: " + response.list[24].main.humidity + "%");
 
         document.getElementById("temp4").append("Temp: " + response.list[32].main.temp);
-        document.getElementById("humidity4").append("Humidity: " + response.list[32].main.humidity + " %");
+        document.getElementById("humidity4").append("Humidity: " + response.list[32].main.humidity + "%");
 
         document.getElementById("temp5").append("Temp: " + response.list[39].main.temp);
-        document.getElementById("humidity5").append("Humidity: " + response.list[39].main.humidity + " %");
+        document.getElementById("humidity5").append("Humidity: " + response.list[39].main.humidity + "%");
     })
 
   })
@@ -129,7 +142,7 @@ $.ajax({
 
         document.getElementById("temp").append(response.main.temp);
 
-        document.getElementById("humid").append(response.main.humidity + " %");
+        document.getElementById("humid").append(response.main.humidity + "%");
 
         document.getElementById("wind").append(response.wind.speed + " MPH");
 
