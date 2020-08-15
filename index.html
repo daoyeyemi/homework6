@@ -22,6 +22,7 @@
                 <div id="searchTitle">Search for a City:</div>
                     <input id="inputCity" type="text" onfocus="this.value=''" placeholder="Choose a city...">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                    <div id="searchHistory"></div>
             </div>
             <div class="col-md-9">
                 <div id="mainBox">
@@ -76,17 +77,25 @@
 
 <script type="text/javascript">
 
+// Things left to do
+//  create search history, clear divs when different city is searched, add weather icon, READ.ME, UV Index, formatting col-md-8
+
+
 var button = document.getElementById("button-addon2");
 
 button.addEventListener("click", function(){
+        
+document.getElementById("#mainTitle").empty();
 
 var input = document.getElementById("inputCity");
 
 var city = input.value;
 
+localStorage.setItem(city);
+
+// document.getElementById("searchHistory").append('<br>' + city + '<br><hr>');
+
 console.log(city); 
- 
-// var city = "Los Angeles";
 
 var queryURL="https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=b55cf10b447457a324c51468a78d2076";
 
@@ -223,9 +232,11 @@ $.ajax({
         document.getElementById("wind").append(response.wind.speed + " MPH");
 
 var lat = response.coord.lat;
+
 var lon = response.coord.lon;
 
 var queryURL3="https://api.openweathermap.org/data/2.5/uvi/forecast?appid=b55cf10b447457a324c51468a78d2076&lat=" + lat + "&lon=" + lon;
+
 $.ajax({
     url: queryURL3,
     method: "GET",
