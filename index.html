@@ -99,6 +99,67 @@ $.ajax({
     var mainDateInfo = [month, day, year];
     var actualDate = mainDateInfo.join('/');
     console.log(actualDate);
+
+    var forecastDate = response.list[8].dt_txt;
+    console.log(forecastDate);
+    var forecastMonth = forecastDate.slice(5,7); 
+    console.log(forecastMonth);
+    var forecastYear = forecastDate.slice(0,4);
+    console.log(forecastYear);
+    var forecastDay = forecastDate.slice(8,10);
+    console.log(forecastDay);
+    var forecastDateInfo = [forecastMonth, forecastDay, forecastYear];
+    var forecastActualDate1 = forecastDateInfo.join('/');
+    console.log(forecastActualDate1);
+
+    var forecastDate = response.list[16].dt_txt;
+    console.log(forecastDate);
+    var forecastMonth = forecastDate.slice(5,7); 
+    console.log(forecastMonth);
+    var forecastYear = forecastDate.slice(0,4);
+    console.log(forecastYear);
+    var forecastDay = forecastDate.slice(8,10);
+    console.log(forecastDay);
+    var forecastDateInfo = [forecastMonth, forecastDay, forecastYear];
+    var forecastActualDate2 = forecastDateInfo.join('/');
+    console.log(forecastActualDate2);
+
+    var forecastDate = response.list[24].dt_txt;
+    console.log(forecastDate);
+    var forecastMonth = forecastDate.slice(5,7); 
+    console.log(forecastMonth);
+    var forecastYear = forecastDate.slice(0,4);
+    console.log(forecastYear);
+    var forecastDay = forecastDate.slice(8,10);
+    console.log(forecastDay);
+    var forecastDateInfo = [forecastMonth, forecastDay, forecastYear];
+    var forecastActualDate3 = forecastDateInfo.join('/');
+    console.log(forecastActualDate3);
+
+    var forecastDate = response.list[32].dt_txt;
+    console.log(forecastDate);
+    var forecastMonth = forecastDate.slice(5,7); 
+    console.log(forecastMonth);
+    var forecastYear = forecastDate.slice(0,4);
+    console.log(forecastYear);
+    var forecastDay = forecastDate.slice(8,10);
+    console.log(forecastDay);
+    var forecastDateInfo = [forecastMonth, forecastDay, forecastYear];
+    var forecastActualDate4 = forecastDateInfo.join('/');
+    console.log(forecastActualDate4);
+
+    var forecastDate = response.list[39].dt_txt;
+    console.log(forecastDate);
+    var forecastMonth = forecastDate.slice(5,7); 
+    console.log(forecastMonth);
+    var forecastYear = forecastDate.slice(0,4);
+    console.log(forecastYear);
+    var forecastDay = forecastDate.slice(8,10);
+    console.log(forecastDay);
+    var forecastDateInfo = [forecastMonth, forecastDay, forecastYear];
+    var forecastActualDate5 = forecastDateInfo.join('/');
+    console.log(forecastActualDate5);
+
     var button = document.getElementById("button-addon2");
     
     button.addEventListener("click", function(){
@@ -108,22 +169,27 @@ $.ajax({
         
         document.getElementById("temp1").append("Temp: " + response.list[8].main.temp);
         document.getElementById("humidity1").append("Humidity: " + response.list[8].main.humidity + "%");
+        document.getElementById("date1").append(forecastActualDate1);
 
         document.getElementById("temp2").append("Temp: " + response.list[16].main.temp);
         document.getElementById("humidity2").append("Humidity: " + response.list[16].main.humidity + "%");
+        document.getElementById("date2").append(forecastActualDate2);
 
         document.getElementById("temp3").append("Temp: " + response.list[24].main.temp);
         document.getElementById("humidity3").append("Humidity: " + response.list[24].main.humidity + "%");
+        document.getElementById("date3").append(forecastActualDate3);
 
         document.getElementById("temp4").append("Temp: " + response.list[32].main.temp);
         document.getElementById("humidity4").append("Humidity: " + response.list[32].main.humidity + "%");
+        document.getElementById("date4").append(forecastActualDate4);
 
         document.getElementById("temp5").append("Temp: " + response.list[39].main.temp);
         document.getElementById("humidity5").append("Humidity: " + response.list[39].main.humidity + "%");
+        document.getElementById("date5").append(forecastActualDate5);
     })
 
   })
-
+ 
 var queryURL2="https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=b55cf10b447457a324c51468a78d2076";
 $.ajax({
     url: queryURL2,
@@ -145,9 +211,6 @@ $.ajax({
         document.getElementById("humid").append(response.main.humidity + "%");
 
         document.getElementById("wind").append(response.wind.speed + " MPH");
-
-        document.getElementById("uv").append();
-
 
 var lat = response.coord.lat;
 var lon = response.coord.lon;
