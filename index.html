@@ -18,12 +18,12 @@
     <form>
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div id="searchTitle">Search for a City:</div>
                     <input id="inputCity" type="text" placeholder="Choose a city...">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-                </div>
-            <div class="col-md-8">
+            </div>
+            <div class="col-md-9">
                 <div id="mainBox">
                     <div id="mainTitle"></div>
                     <br>
@@ -75,8 +75,16 @@
 </form>
 
 <script type="text/javascript">
-        
-var city = "Long Beach"
+
+var button = document.getElementById("button-addon2");
+
+button.addEventListener("click", function(){
+
+var input = document.getElementById("inputCity");
+
+var city = input.value;
+
+console.log(city); 
 
 var queryURL="https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=b55cf10b447457a324c51468a78d2076";
 
@@ -87,7 +95,7 @@ $.ajax({
   .then(function(response){
 
     console.log(response);
-
+  })
     var date = response.list[0].dt_txt;
     console.log(date);
     var month = date.slice(5,7);
@@ -162,30 +170,42 @@ $.ajax({
 
     var button = document.getElementById("button-addon2");
     
+    var url1 = 'http://openweathermap.org/img/wn/' + response.list[8].weather[0].icon + '@2x.png';
+    var url2 = 'http://openweathermap.org/img/wn/' + response.list[16].weather[0].icon + '@2x.png';
+    var url3 = 'http://openweathermap.org/img/wn/' + response.list[24].weather[0].icon + '@2x.png';
+    var url4 = 'http://openweathermap.org/img/wn/' + response.list[32].weather[0].icon + '@2x.png';
+    var url5 = 'http://openweathermap.org/img/wn/' + response.list[39].weather[0].icon + '@2x.png';
+
     button.addEventListener("click", function(){
 
         document.getElementById("mainTitle").append(response.city.name);
         document.getElementById("mainTitle").append(" " + actualDate);
-        
-        document.getElementById("temp1").append("Temp: " + response.list[8].main.temp);
+        document.getElementById("mainTitle").append("");
+
+        document.getElementById("temp1").append("Temp: " + response.list[8].main.temp + " K");
         document.getElementById("humidity1").append("Humidity: " + response.list[8].main.humidity + "%");
         document.getElementById("date1").append(forecastActualDate1);
+        $(`<img src='${url1}'>`).appendTo("#pic1");
 
-        document.getElementById("temp2").append("Temp: " + response.list[16].main.temp);
+        document.getElementById("temp2").append("Temp: " + response.list[16].main.temp + " K");
         document.getElementById("humidity2").append("Humidity: " + response.list[16].main.humidity + "%");
         document.getElementById("date2").append(forecastActualDate2);
+        $(`<img src='${url2}'>`).appendTo("#pic2");
 
-        document.getElementById("temp3").append("Temp: " + response.list[24].main.temp);
+        document.getElementById("temp3").append("Temp: " + response.list[24].main.temp + " K");
         document.getElementById("humidity3").append("Humidity: " + response.list[24].main.humidity + "%");
         document.getElementById("date3").append(forecastActualDate3);
+        $(`<img src='${url3}'>`).appendTo("#pic3");
 
-        document.getElementById("temp4").append("Temp: " + response.list[32].main.temp);
+        document.getElementById("temp4").append("Temp: " + response.list[32].main.temp + " K");
         document.getElementById("humidity4").append("Humidity: " + response.list[32].main.humidity + "%");
         document.getElementById("date4").append(forecastActualDate4);
+        $(`<img src='${url4}'>`).appendTo("#pic4");
 
-        document.getElementById("temp5").append("Temp: " + response.list[39].main.temp);
+        document.getElementById("temp5").append("Temp: " + response.list[39].main.temp + " K");
         document.getElementById("humidity5").append("Humidity: " + response.list[39].main.humidity + "%");
         document.getElementById("date5").append(forecastActualDate5);
+        $(`<img src='${url5}'>`).appendTo("#pic5");
     })
 
   })
@@ -206,7 +226,7 @@ $.ajax({
         
         var city = input.value;
 
-        document.getElementById("temp").append(response.main.temp);
+        document.getElementById("temp").append(response.main.temp + " K");
 
         document.getElementById("humid").append(response.main.humidity + "%");
 
@@ -225,7 +245,9 @@ $.ajax({
     document.getElementById("uv").append(response[0].value);
 
   })
-  })
+
+})
+
 })
 
 </script>
